@@ -1,4 +1,4 @@
-class StudentResponse {
+public class StudentResponse extends Observer {
 
   // Properties or Attributes
   String studentFile;
