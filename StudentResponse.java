@@ -1,7 +1,7 @@
 public class StudentResponse extends Observer {
 
   // Properties or Attributes
-  String studentFile;
+  String studentResponse;
   File checkFile;
 
   // Constructor: A method that hasa the same name as the class
@@ -13,25 +13,28 @@ public class StudentResponse extends Observer {
 
   // Methods
   void String takeInput() {
-    Scanner reader = new Scanner(System.in);
-    System.out.println("Type in the Student Data file name: ");
-    studentFile = reader.nextLine();
+   Scanner reader = new Scanner(System.in);
+   System.out.println("\nType in the student response file name (include the file extension)");
+   studentResponse = reader.nextLine().toLowerCase();
   }
   
   void checkExist() {
-    File checkFile = new File(Studentfile);
-    // if the file does not exist
-    while (!checkFile.exists()) {
-      System.out.println("\nThis file does not exist please try again.");
-      studentFile = reader.nextLine();
-      checkFile = new File(studentFile);    
-    }
-    // if the file exists
-    if(checkFile.exists()){
-      System.out.println("Finding file for you");
-      // prints and returns the student file
-      printResults(studentFile);
-      return studentFile;
-    }
+   checkFile = new File(studentResponse);
+   while (!checkFile.exists()) {
+     System.out.println("You entered: " + studentResponse);
+     System.out.println("This file does not exist. Please try another file\n");
+     studentResponse = reader.nextLine().toLowerCase();
+     checkFile = new File(studentResponse);
+   }
+
+   while (!studentResponse.contains("response")) {
+     System.out.println("You entered: " + studentResponse);
+     System.out.println("Cannot open this file. Please try another file\n");
+     inputStudentResponse = reader.nextLine().toLowerCase();
+     checkFile = new File(studentResponse);
+   }
+   System.out.println("You entered: " + studentResponse + "\n");
+
+    return studentResponse;
   }
 }
