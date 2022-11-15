@@ -71,18 +71,18 @@ class Main {
   public static String answerData() {
     Scanner reader = new Scanner(System.in);
     System.out.println("Type in the file name containing the answer");
-    String answerfile = reader.nextLine();
-    File checkFile = new File(answerfile);
+    String answerFile = reader.nextLine();
+    File checkFile = new File(answerFile);
     while (!checkFile.exists()) {
       System.out.println("\nThis file does not exist please try again.");
-      answerfile = reader.nextLine().toLowerCase();
-      checkFile = new File(answerfile);    
+      answerFile = reader.nextLine().toLowerCase();
+      checkFile = new File(answerFile);    
     }
     if(checkFile.exists()){
       System.out.println("Finding file for you");
       System.out.println("Please wait as it loads");
     }
-    return answerfile;
+    return answerFile;
   }
   /**
  * Asks the user to type in the student response file name and then prints it
