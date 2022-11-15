@@ -11,16 +11,16 @@ class Main {
  * @param N/A
  * @return Student file
  */
-  public static String StudentDataFile() {
+  public static String studentDataFile() {
     Scanner reader = new Scanner(System.in);
     System.out.println("Type in the Student Data file name: ");
-    String Studentfile = reader.nextLine();
-    File checkFile = new File(Studentfile);
+    String studentfile = reader.nextLine();
+    File checkFile = new File(studentfile);
     //if the file does not exist
     while (!checkFile.exists()) {
       System.out.println("\nThis file does not exist please try again.");
-      Studentfile = reader.nextLine();
-      checkFile = new File(Studentfile);    
+      studentfile = reader.nextLine();
+      checkFile = new File(studentfile);    
     }
     //if the file exists
     if(checkFile.exists()){
@@ -28,8 +28,8 @@ class Main {
       System.out.println("Please wait as it loads");
     }
     //prints/returns the student file
-    printResults(Studentfile);
-    return Studentfile;
+    printResults(studentfile);
+    return studentfile;
   }
   /**
  * Asks the user to type in the question file that they want to open 
@@ -40,13 +40,13 @@ class Main {
     Scanner reader = new Scanner(System.in);
     System.out.println("  "); 
     System.out.println("Type in the Question file name: ");
-    String Questionsfile = reader.nextLine();
-    File checkFile = new File(Questionsfile);
+    String questionsfile = reader.nextLine();
+    File checkFile = new File(questionsfile);
     //if file does not exist
     while (!checkFile.exists()) {
       System.out.println("\nThis file does not exist please try again.");
-      Questionsfile = reader.nextLine().toLowerCase();
-      checkFile = new File(Questionsfile);
+      questionsfile = reader.nextLine().toLowerCase();
+      checkFile = new File(questionsfile);
     }
     //if it does exist
     if(checkFile.exists()){
@@ -54,14 +54,14 @@ class Main {
       System.out.println("Please wait as it loads");
     }
     //making it a array
-    int totalLines = countingLines(Questionsfile);
+    int totalLines = countingLines(questionsfile);
     String[] studentDataArray = new String[totalLines-1];
-    AnsResult(Questionsfile, studentDataArray);
+    ansResult(questionsfile, studentDataArray);
     for (String word : studentDataArray) {
       System.out.print(word + " ");
       System.out.println();    
     }
-    return Questionsfile;
+    return questionsfile;
   }
   /**
  * Asks the user to type in what Answer file they want to open 
@@ -71,18 +71,18 @@ class Main {
   public static String answerData() {
     Scanner reader = new Scanner(System.in);
     System.out.println("Type in the file name containing the answer");
-    String Answerfile = reader.nextLine();
-    File checkFile = new File(Answerfile);
+    String answerfile = reader.nextLine();
+    File checkFile = new File(answerfile);
     while (!checkFile.exists()) {
       System.out.println("\nThis file does not exist please try again.");
-      Answerfile = reader.nextLine().toLowerCase();
-      checkFile = new File(Answerfile);    
+      answerfile = reader.nextLine().toLowerCase();
+      checkFile = new File(answerfile);    
     }
     if(checkFile.exists()){
       System.out.println("Finding file for you");
       System.out.println("Please wait as it loads");
     }
-    return Answerfile;
+    return answerfile;
   }
   /**
  * Asks the user to type in the student response file name and then prints it
@@ -92,31 +92,31 @@ class Main {
   public static String studentResponse() {
     Scanner reader = new Scanner(System.in);
     System.out.println("\nType in the student response file name (include the file extension)");
-    String StudentResponses = reader.nextLine().toLowerCase();
-    File checkFile = new File(StudentResponses); 
+    String studentResponses = reader.nextLine().toLowerCase();
+    File checkFile = new File(studentResponses); 
     while (!checkFile.exists()) {
-      System.out.println("You entered: " + StudentResponses);
+      System.out.println("You entered: " + studentResponses);
       System.out.println("This file does not exist. Please try another file\n");
-      StudentResponses = reader.nextLine().toLowerCase();
-      checkFile = new File(StudentResponses);
+      studentResponses = reader.nextLine().toLowerCase();
+      checkFile = new File(studentResponses);
     }
     if(checkFile.exists()){ 
-      while(!StudentResponses.contains("response")){
-        System.out.println("You entered: " + StudentResponses);
+      while(!studentResponses.contains("response")){
+        System.out.println("You entered: " + studentResponses);
         System.out.println("Can't' open this file. Please try another file\n");
-        StudentResponses = reader.nextLine().toLowerCase();
-        checkFile = new File(StudentResponses);
+        studentResponses = reader.nextLine().toLowerCase();
+        checkFile = new File(studentResponses);
       }
-      System.out.println("You entered: " + StudentResponses + "\n");
+      System.out.println("You entered: " + studentResponses + "\n");
     }  
-    return StudentResponses;
+    return studentResponses;
   }
   /**
  * Meant to solve the equations but I did not get a chance to figure out how to do it (this is where the code would have gone). Instead it asks if you want to skip to just seeing the answers or get it to solve
  * @param N/A
  * @return 
  */
-public static void Solver(){
+public static void solver(){
     Scanner reader = new Scanner(System.in);
     System.out.println("\nType in 'solve' inorder for the program to solve the equations for you or 'skip' to go directly to the answer key");
     String studentResponse = reader.nextLine();
@@ -129,7 +129,7 @@ public static void Solver(){
     if(studentResponse.equals("solve")){
       System.out.println("The Solver is still under construction. Try again some other time. ");
     }
-    TheANSWER();
+    theAnswer();
   }
     /**
  * makes answer a 1D array, loads response, and cleans out unnecessary data
@@ -137,7 +137,7 @@ public static void Solver(){
  * @return 
  */
   
-  public static void AnsResult(String file, String[] studentDataArray) {
+  public static void ansResult(String file, String[] studentDataArray) {
     BufferedReader br = null;
     int lineNum = 0;
     try {
@@ -189,15 +189,15 @@ public static void Solver(){
       System.out.println();
     }
   }
-public static void TheANSWER(){
+public static void theAnswer(){
     String answer = answerData();
-    int AnswerLines = countingLines(answer);
+    int answerLines = countingLines(answer);
     // this makes the answer into a 1D array because it will be easier to compare later this way
-    String[] ANSarray = new String[AnswerLines-1];
-    AnsResult(answer, ANSarray);
+    String[] ansArray = new String[answerLines-1];
+    ansResult(answer, ansArray);
 
     // prints out every element in the array individually
-    for (String word : ANSarray) {
+    for (String word : ansArray) {
       System.out.print(word + "  "); 
       System.out.println();
     }
@@ -221,7 +221,7 @@ public static void TheANSWER(){
         createScore[i][j] = responseArray[i][j];
       }
     }
-    compareBothAnswers(createScore, responseArray, ANSarray);
+    compareBothAnswers(createScore, responseArray, ansArray);
   }
     /**
  * counts the lines in the array
@@ -286,7 +286,7 @@ public static void TheANSWER(){
     }
   }
 
-  public static String[][] StudentArray(String[][] studentData){
+  public static String[][] studentsArr (String[][] studentData){
     int studentDataLength = studentData.length;
     String[][] studentArray = new String[studentDataLength][2]; 
 
@@ -301,7 +301,7 @@ public static void TheANSWER(){
  * @param 2D array of the scores and 2D array of the student responses
  * @return  the scores if the answer was correct
  */
-  public static void compareBothAnswers(String[][] createScore, String[][] responseArray, String[] ANSarray) {
+  public static void compareBothAnswers(String[][] createScore, String[][] responseArray, String[] ansArray) {
     System.out.println("\nComparing...\n");
     int mark = 0;
     for (int i = 0; i < responseArray.length; i++) {
@@ -310,7 +310,7 @@ public static void TheANSWER(){
         // program compares the student's answers with answer key answers
         // j+4 starts comparing the student's response on column 4
         // j*2+1 compares the to the answers instead of a1, a2, a3 (on the odd columns)
-        if(responseArray[i][j+4].equals(ANSarray[j*2+1])){
+        if(responseArray[i][j+4].equals(ansArray[j*2+1])){
           mark++;
         }
         createScore[i][4] = Integer.toString(mark); //turn int to string
@@ -352,8 +352,8 @@ public static void TheANSWER(){
 
   public static void main(String[] args) {
 // Calling all the methods 
-    StudentDataFile();
+    studentDataFile();
     questionsData();
-    Solver();
+    solver();
   }
 }
