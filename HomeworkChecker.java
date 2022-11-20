@@ -15,9 +15,10 @@ public class HomeworkChecker {
    new StudentResponse(subject);
    new EquationSolver(subject);
   
-    System.out.println("hi");
-
-
+   System.out.println("hi");
+ }
+ 
+ 
   /**
  * Meant to solve the equations but I did not get a chance to figure out how to do it (this is where the code would have gone). Instead it asks if you want to skip to just seeing the answers or get it to solve
  * @param N/A
@@ -219,5 +220,4 @@ public static void theAnswer(){
       e.printStackTrace();
     }
   }
- }
 }
