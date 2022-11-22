@@ -1,40 +1,106 @@
-public class StudentResponse extends Observer {
+import java.util.Scanner;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.FileWriter;
+
+public class StudentResponse implements Observer {
 
   // Properties or Attributes
   String studentResponse;
   File checkFile;
 
-  // Constructor: A method that hasa the same name as the class
-  /*
-  public Pokemon(String name){
-   this.name = name;
-   this.HP = 10;    // All pokemon will have a default of 10hp
-  }*/
+  // Constructor: A method that has the same name as the class
+  public StudentResponse(Subject subject){
+    //this.subject = subject;
+    //this.subject.attach(this);
+  }
 
   // Methods
-  void String takeInput() {
-   Scanner reader = new Scanner(System.in);
-   System.out.println("\nType in the student response file name (include the file extension)");
-   studentResponse = reader.nextLine().toLowerCase();
+  public static void printResults(String data) {
+    int totalLines = countingLines(data);
+    String[][] studentsArray = new String[totalLines-1][];
+     //printing result of the array
+    populateArray(data, studentsArray);
+
+    // This makes it a 1D array first
+    // this is taking each line of the array at a time
+    for (String[] line : studentsArray) {
+      for (String word : line) {
+        System.out.print(word+ "  ");
+      }
+      System.out.println();
+    }
+  }
+
+/**
+ * counts the lines in the array
+ * @param String file this specifically counts the lines of the file 
+ * the user wants to open
+ * @return line amount
+ */
+  public static int countingLines(String file) {
+    BufferedReader br = null;
+    int count = 0;
+    try {
+      br = new BufferedReader(new FileReader(file));
+      String contentLine = br.readLine();
+      while (contentLine != null) {
+        count++;
+        contentLine = br.readLine();
+      }
+      return count;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return -1;
+    } finally {
+      try {
+        if (br != null) {
+          br.close();
+        }
+      } catch (IOException e) {
+        System.out.println("Error in closing the BufferedReader");
+      }
+    }
   }
   
-  void checkExist() {
-   checkFile = new File(studentResponse);
-   while (!checkFile.exists()) {
-     System.out.println("You entered: " + studentResponse);
-     System.out.println("This file does not exist. Please try another file\n");
-     studentResponse = reader.nextLine().toLowerCase();
-     checkFile = new File(studentResponse);
-   }
-
-   while (!studentResponse.contains("response")) {
-     System.out.println("You entered: " + studentResponse);
-     System.out.println("Cannot open this file. Please try another file\n");
-     inputStudentResponse = reader.nextLine().toLowerCase();
-     checkFile = new File(studentResponse);
-   }
-   System.out.println("You entered: " + studentResponse + "\n");
-
-    return studentResponse;
+/**
+ * Populates array aka makes it into a array 
+ * @param opens the file 
+ * @return file made into a array
+ */
+  public static void populateArray(String file, String[][] data) {
+    BufferedReader br = null;
+    int lineNum = 0;
+    //Gets rid of the commas from the data as they are not needed 
+    String delim = ",";
+    try {
+      br = new BufferedReader(new FileReader(file));
+      br.readLine();
+      String contentLine = br.readLine();
+      while (contentLine != null) {
+        //when i got rid of the -1 after delim the index was going out of bounds therfore this keeps it in bounds :)
+        data[lineNum] = contentLine.split(delim,-1);
+        lineNum++;
+        contentLine = br.readLine();
+      }
+      //catches any errors
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (br != null) {
+          br.close();
+        }
+      } catch (IOException e) {
+        System.out.println("Error in closing the BufferedReader");
+      }
+    }
+  }
+  
+  //@Override
+  public void update(String file) {
+    System.out.println("updated StudentResponse"); 
   }
 }
