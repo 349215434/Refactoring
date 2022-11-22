@@ -8,14 +8,7 @@ import java.io.FileWriter;
 public class HomeworkChecker {
  public static void main(String[] args) {
   Subject subject = new Subject();
-
-   new StudentData(subject);
-   new QuestionData(subject);
-   new AnswerData(subject);
-   new StudentResponse(subject);
-   new EquationSolver(subject);
-  
-   System.out.println("hi");
+  subject.takeInput();
  }
  
  
