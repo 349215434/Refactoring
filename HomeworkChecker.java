@@ -6,9 +6,12 @@ import java.io.File;
 import java.io.FileWriter;
 
 public class HomeworkChecker {
- public static void main(String[] args) {
-  Subject subject = new Subject();
-  subject.takeInput();
+  public static void main(String[] args) {
+    Subject subject = new Subject();
+    subject.takeInput("Type in the student data file (include the file extension)");
+    //question
+    solver();
+    subject.takeInput("Type in the student response file (include the file extension)");
  }
  
  
