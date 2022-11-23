@@ -49,7 +49,7 @@ public class OpenAnswer implements Observer {
       System.out.print(word + "  "); 
       System.out.println();
     }
-    //this is loading the student responses again
+    // This is loading the student responses again
     String responses = subject.takeInput("Type in the student response file (include the file extension)");
     int responseLines = countingLines(responses);
     // response is a 2D array
