@@ -10,12 +10,12 @@ public class StudentResponse implements Observer {
   // Properties or Attributes
   String studentResponse;
   File checkFile;
-  // Methods
-  
+
+  //Methods
   /**
- * This takes the results of the array and makes it a array
- * @param String data - takes the String data
- */
+   * This takes the results of the array and makes it a array
+   * @param String data - takes the String data
+   */
   void printResults(String data) {
     int totalLines = countingLines(data);
     String[][] studentsArray = new String[totalLines-1][];
@@ -32,11 +32,11 @@ public class StudentResponse implements Observer {
     }
   }
 
-/**
- * counts the lines in the array
- * @param String file - this specifically counts the lines of the file the user wants to open
- * @return -1
- */
+  /**
+   * counts the lines in the array
+   * @param String file specifically counts the lines of the file the user wants to open
+   * @return -1
+   */
   public static int countingLines(String file) {
     BufferedReader br = null;
     int count = 0;
@@ -62,11 +62,11 @@ public class StudentResponse implements Observer {
     }
   }
   
-/**
- * Populates array aka makes it into a array 
- * @param String file - the file the user wants to open
- * @param String[][] data - the data in a 2D array
- */
+  /**
+   * Populates array aka makes it into a array 
+   * @param String file - the file the user wants to open
+   * @param String[][] data - the data in a 2D array
+   */
   public static void populateArray(String file, String[][] data) {
     BufferedReader br = null;
     int lineNum = 0;
