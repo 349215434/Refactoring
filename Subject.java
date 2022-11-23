@@ -39,8 +39,8 @@ public class Subject {
    * @param String event
    */
   void notifyAllObservers(String event) {
-    if (event.contains("data")) {
-      StudentResponse open = new StudentResponse();
+    if (event.contains("student_data")) {
+      StudentData open = new StudentData();
       open.printResults(event);
     } else if (event.contains("_q_")) {
       QuestionData openQuesFile = new QuestionData();
@@ -48,8 +48,11 @@ public class Subject {
     } else if (event.contains("_a_")) {
       AnswerData openAnsFile = new AnswerData();
       openAnsFile.printResults(event);
+    } else if (event.contains("response")) {
+      StudentResponse openResponse = new StudentResponse();
+      openResponse.printResults(event);
     }
-
+      
     for (Observer observer : observers) {
       observer.update(event);
     }
