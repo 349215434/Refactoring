@@ -12,14 +12,15 @@ public class Subject {
   }
 
   /**
-   * 
+   * takes the user's input and makes sure the file exist
    * @param String event
+   * @return studentResponse;
    */
   String takeInput(String prompt) {
     Scanner reader = new Scanner(System.in);
     System.out.println(prompt);
     String studentResponse = reader.nextLine().toLowerCase();
-    //checkExist(studentResponse, prompt);
+    // check if the file exist
     File checkFile = new File(studentResponse);
     while (!checkFile.exists()) {
       System.out.println("You entered: " + studentResponse);
@@ -34,22 +35,7 @@ public class Subject {
   }
 
   /**
-   * 
-   * @param String event
-   */
-  void checkExist(String studentResponse, String prompt) {
-    File checkFile = new File(studentResponse);
-    while (!checkFile.exists()) {
-      System.out.println("You entered: " + studentResponse);
-      System.out.println("This file does not exist. Please try another file\n");
-      takeInput(prompt);
-      checkFile = new File(studentResponse);
-    }
-    System.out.println("You entered: " + studentResponse + "\n");
-  }
-
-  /**
-   * 
+   * notifies all the observers of the inputs
    * @param String event
    */
   void notifyAllObservers(String event) {
