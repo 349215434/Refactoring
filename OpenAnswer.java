@@ -7,9 +7,8 @@ import java.io.FileWriter;
 
 public class OpenAnswer implements Observer {
   /**
-   * Meant to solve the equations but I did not get a chance to figure out 
-   * how to do it (this is where the code would have gone). Instead it asks if you 
-   * want to skip to just seeing the answers or get it to solve
+   * Ask the user if they wan   * Ask the user if they want the program to solve the question or 
+   * skip and open the file with the answer
    */
   public void chooseSolveOrSkip(){
     Scanner reader = new Scanner(System.in);
