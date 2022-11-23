@@ -13,7 +13,7 @@ public class AnswerData implements Observer {
 
   // Methods
 
-    /**
+  /**
    * Makes the data into an array and prints
    * @param String data - passes data as a String
    */ 
